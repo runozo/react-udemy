@@ -1,7 +1,9 @@
 var GreeterMessage = React.createClass({
     render: function() {
+
         var name = this.props.name;
         var message = this.props.message;
+
         return (
             <div>
                 <h1>Hello {name}</h1>
@@ -15,23 +17,25 @@ var GreeterForm = React.createClass({
     onFormSubmit: function(e) {
         e.preventDefault();
 
+        var updates = {};
         var name = this.refs.name.value;
         var message = this.refs.message.value;
 
         if (name.length > 0) {
             this.refs.name.value = '';
-            this.props.onNewName(name);
+            updates.name = name;
         }
         if (message.length > 0) {
             this.refs.message.value = '';
-            this.props.onNewMessage(message);
+            updates.message = message;
         }
+        this.props.onUpdates(updates);
     },
     render: function() {
         return (
             <form onSubmit={this.onFormSubmit}>
-                <input type="text" ref="name"/><br/>
-                <textarea ref="message"/><br/>
+                <input type="text" ref="name" placeholder="Enter name"/><br/>
+                <textarea ref="message" placeholder="Enter message"/><br/>
                 <button>Set</button>
             </form>
         )
@@ -51,15 +55,8 @@ var Greeter = React.createClass({
             message: this.props.message
         };
     },
-    handleNewName: function(name) {
-        this.setState({
-            name: name
-        });
-    },
-    handleNewMessage: function(message) {
-        this.setState({
-            message: message
-        });
+    handleUpdates: function(updates) {
+        this.setState(updates);
     },
     render: function() {
         var name = this.state.name;
@@ -68,7 +65,7 @@ var Greeter = React.createClass({
         return (
             <div>
                 <GreeterMessage name ={name} message={message}/>
-                <GreeterForm onNewName={this.handleNewName} onNewMessage={this.handleNewMessage}/>
+                <GreeterForm onUpdates={this.handleUpdates}/>
             </div>
         );
     }
