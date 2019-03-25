@@ -34,9 +34,15 @@ var GreeterForm = React.createClass({
     render: function() {
         return (
             <form onSubmit={this.onFormSubmit}>
-                <input type="text" ref="name" placeholder="Enter name"/><br/>
-                <textarea ref="message" placeholder="Enter message"/><br/>
-                <button>Set</button>
+                <div>
+                    <input type="text" ref="name" placeholder="Enter name"/>
+                </div>
+                <div>
+                    <textarea ref="message" placeholder="Enter message"/>
+                </div>
+                <div>
+                    <button>Submit</button>
+                </div>
             </form>
         )
     }
