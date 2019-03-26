@@ -9,6 +9,6 @@ var React = require('react');
 // });
 
 // Here it is: the stateless component definition
-var About = (props) => <h3>About Component</h3>;
+var About = () => <h3>About Component</h3>;
 
 module.exports = About;
