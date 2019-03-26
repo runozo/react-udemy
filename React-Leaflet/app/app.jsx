@@ -6,7 +6,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 
 const position = [51.505, -0.09]
 const map = (
-  <Map center={position} zoom={13} style={{width:400, height:400}}>
+  <Map center={position} zoom={13} style={{width:400 + 'px', height:400 + 'px'}}>
     <TileLayer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"

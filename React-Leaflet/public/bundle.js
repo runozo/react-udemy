@@ -57,7 +57,7 @@
 	var position = [51.505, -0.09];
 	var map = React.createElement(
 	  _reactLeaflet.Map,
-	  { center: position, zoom: 13, style: { width: 400, height: 400 } },
+	  { center: position, zoom: 13, style: { width: 400 + 'px', height: 400 + 'px' } },
 	  React.createElement(_reactLeaflet.TileLayer, {
 	    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	    attribution: '\xA9 <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

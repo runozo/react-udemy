@@ -11,3 +11,21 @@ getTempCallback('Philadelphia', function(err, temp) {
         console.log('success', temp);
     }
 });
+
+function getTempPromise(location) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve(79);
+            reject('City not found');
+        }, 3000);
+    });
+}
+
+getTempPromise('Philadelphia').then(
+    function(temp) {
+        console.log('promise success', temp);
+    },
+    function(err) {
+        console.log('promise error', err);
+    }
+);
