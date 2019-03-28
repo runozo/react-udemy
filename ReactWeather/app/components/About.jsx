@@ -11,7 +11,15 @@ var React = require('react');
 // Here it is: the stateless component definition
 var About = () =>
     <div>
-        <h3>About</h3>
+        <h1 className="text-center">About</h1>
+        <p>This is a weather application built on React. I have built this for the Complete React Web App Course.</p>
+        <p>
+            Here are some of the tools I used:
+        </p>
+        <ul>
+            <li><a href="https://facebook.github.io/react">React</a></li> - This was the javascript framework used.
+            <li><a href="http://openweathermap.org">Open Weather Map</a></li> - I used Open Weather Map to search for weather data by city name.
+        </ul>
     </div>;
 
 module.exports = About;
