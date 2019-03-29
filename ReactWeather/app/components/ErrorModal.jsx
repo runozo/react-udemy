@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
+
 
 class ErrorModal extends Component {
     constructor(props) {
@@ -13,13 +16,9 @@ class ErrorModal extends Component {
         message: React.PropTypes.string.isRequired
     };
     componentDidMount() {
-        var modal = new Foundation.Reveal($('#error-modal'));
-        modal.open();
-    }
-    render() {
         var {title, message} = this.props;
 
-        return (
+        var modalMarkup = (
             <div id="error-modal" className="reveal tiny text-center" data-reveal="">
                 <h4>{title}</h4>
                 <p>{message}</p>
@@ -29,6 +28,18 @@ class ErrorModal extends Component {
                     </button>
                 </p>
             </div>
+        );
+
+        // Fix Foundation messing with the DOM
+        var $modal = $(ReactDOMServer.renderToString(modalMarkup));
+        $(ReactDOM.findDOMNode(this)).html($modal);
+
+        var modal = new Foundation.Reveal($('#error-modal'));
+        modal.open();
+    }
+    render() {
+        return (
+            <div></div>
         );
     }
 };
