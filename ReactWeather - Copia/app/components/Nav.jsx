@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Link, IndexLink} from 'react-router';
+var React = require('react');
+var {Link, IndexLink} = require('react-router');
 
-class Nav extends Component {
-    onSearch(e) {
+var Nav = React.createClass({
+    onSearch: function(e) {
         e.preventDefault();
 
         var location = this.refs.search.value;
@@ -11,8 +11,8 @@ class Nav extends Component {
             this.refs.search.value = '';
             window.location.hash = `#/?location=${encodedLocation}`;
         }
-    }
-    render() {
+    },
+    render: function() {
         return (
             <div className="top-bar">
                 <div className="top-bar-left">
@@ -34,6 +34,6 @@ class Nav extends Component {
             </div>
         );
     }
-};
+});
 
 module.exports = Nav;

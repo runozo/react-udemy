@@ -4,6 +4,10 @@ import ReactDOMServer from 'react-dom/server';
 
 
 class ErrorModal extends Component {
+    constructor(props) {
+        super(props);
+        console.log(props);
+    }
     static defaultProps = {
         title: 'Error'
     };

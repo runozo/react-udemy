@@ -1,20 +1,16 @@
-import React, {Component} from 'react';
-import WeatherForm from 'WeatherForm';
-import WeatherMessage from 'WeatherMessage';
-import openWeatherMap from 'openWeatherMap';
-import ErrorModal from 'ErrorModal';
+var React = require('react');
+var WeatherForm = require('WeatherForm');
+var WeatherMessage = require('WeatherMessage');
+var openWeatherMap = require('openWeatherMap');
+var ErrorModal = require('ErrorModal');
 
-
-class Weather extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+var Weather = React.createClass({
+    getInitialState: function() {
+        return {
             isLoading: false
         }
-        this.handleSearch = this.handleSearch.bind(this) // https://github.com/goatslacker/alt/issues/283
-    }
-
-    handleSearch(location) {
+    },
+    handleSearch: function(location) {
         var that = this;
 
         this.setState({
@@ -36,25 +32,25 @@ class Weather extends Component {
                 that.setState({
                     isLoading: false,
                     errorMessage: e.message
-                });
+                })
             }
         );
-    }
-    componentDidMount() {
+    },
+    componentDidMount: function() {
         var location = this.props.location.query.location;
         if (location && location.length > 0) {
             this.handleSearch(location);
             window.location.hash = '#/';
         }
-    }
-    componentWillReceiveProps(newProps) {
+    },
+    componentWillReceiveProps: function(newProps) {
         var location = newProps.location.query.location;
         if (location && location.length > 0) {
             this.handleSearch(location);
             window.location.hash = '#/';
         }
-    }
-    render() {
+    },
+    render: function() {
         var {isLoading, temp, location, errorMessage} = this.state;
 
         function renderMessage() {
@@ -83,6 +79,6 @@ class Weather extends Component {
             </div>
         );
     }
-};
+});
 
 module.exports = Weather;
