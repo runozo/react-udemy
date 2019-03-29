@@ -18,7 +18,8 @@ module.exports = {
             },
             // error
             function(res) {
-                throw new Error(res.data.message);
+                // throw new Error(res.response.data.message);
+                throw new Error('City not found');
             }
         );
     }
