@@ -1,0 +1,1 @@
+React boilerplate with scss end ES6 syntax
